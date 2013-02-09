@@ -1,0 +1,33 @@
+(ns twitterdsl.config
+  (:refer-clojure :exclude [set])
+  (:import [twitter4j.conf ConfigurationBuilder]))
+
+(def settings (atom nil))
+
+(comment (defn read-config 
+  (split-lines
+   (slurp "api.config"))))
+
+(def config-keys 
+  ["consumer-key"
+   "consumer-key-secret"
+   "access-token"
+   "access-token-secret"])
+
+(def consumer-key (atom nil))
+(def consumer-key-secret (atom nil))
+(def access-token (atom nil))
+(def access-token-secret (atom nil))
+
+(defn set
+  [consumer-key
+   consumer-secret
+   access-token
+   access-token-secret]
+  (reset! settings
+          (doto (ConfigurationBuilder.)
+            (.setOAuthConsumerKey consumer-key)
+            (.setOAuthConsumerSecret consumer-secret)
+            (.setOAuthAccessToken access-token)
+            (.setOAuthAccessTokenSecret access-token-secret))))
+            

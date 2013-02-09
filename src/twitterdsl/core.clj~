@@ -1,0 +1,24 @@
+(ns twitterdsl.core
+  (:use clojure.template)
+  (:require [twitterdsl.config :as config])
+  (:import [twitter4j TwitterFactory]
+           [twitter4j.api FavoritesResources]))
+
+(defmacro twitter-instance 
+  [var-name]
+  (config/set consumer-key
+              consumer-key-secret
+              access-token
+              access-token-secret)
+  `(def ~var-name 
+     (.getInstance
+      (TwitterFactory. 
+       (.build
+        (deref config/settings))))))
+
+(def ^:dynamic *instance*)
+
+(defmacro with-instance
+  [twitter-instance & body]
+  `(binding [*instance* ~twitter-instance]
+     ~@body))

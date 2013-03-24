@@ -1,11 +1,11 @@
-# twitterdsl
+<h3>Removed to make a nicer re-write. Will update shortly</h3>
 
-A Clojure library designed to ... well, that part is up to you.
 
-## Usage
-
-FIXME
-
+```clojure
+(ns testing.core
+  (:use twitterdsl.core)
+  (:require [twitterdsl.direct-message :as direct-message]))
+```
 ## License
 
 Copyright © 2013 FIXME

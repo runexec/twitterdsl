@@ -1,2 +1,0 @@
-(ns twitterdsl.base
-  (:import [twitter4j TwitterBase]))

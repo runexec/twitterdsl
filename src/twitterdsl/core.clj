@@ -22,7 +22,8 @@
                          last
                          (split #"\s"))]
            (recur 
-            (merge settings {(keyword k) v})
+            (assoc settings
+              (keyword k) v)
             (drop-last config))))))) 
 
 (defn- auth-instance [& config-path]
@@ -49,7 +50,7 @@
          TwitterFactory.
          .getInstance))
   ([config-path]
-     (-> config-path
+     (-> (apply str config-path)
          auth-instance
          TwitterFactory.
          .getInstance)))
@@ -59,4 +60,3 @@
                    (build-instance)
                    (build-instance config-path))]
     `(def ~_symbol ~instance)))
-

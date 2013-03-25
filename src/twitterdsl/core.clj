@@ -2,7 +2,7 @@
   (:use [clojure.string :only [split 
                                split-lines]])
   (:import [twitter4j.conf ConfigurationBuilder]
-           [twitter4j TwitterFactory]))
+           [twitter4j TwitterFactory TwitterImpl]))
 
 (defn- load-config
   ([] (load-config "api.config"))
@@ -59,3 +59,36 @@
                    (build-instance 
                     (first config-path)))]
     `(def ~_symbol ~instance)))
+
+(defn is-instance? [twitter]
+  (= (class twitter)
+     TwitterImpl))
+
+(defn add-rate-limit-status-listener 
+  [twitter listener]
+  {:pre [(is-instance? twitter)]}
+  (.. twitter 
+      (addRateLimitStatusListener listener)))
+
+(defn get-authorization [twitter]
+  {:pre [(is-instance? twitter)]}
+  (.getAuthorization twitter))
+
+(defn get-configuration [twitter]
+  {:pre [(is-instance? twitter)]}
+  (.getConfiguration twitter))
+
+(defn get-user-id [twitter]
+  {:pre [(is-instance? twitter)]}
+  (.getId twitter))
+
+(defn get-screen-name [twitter]
+  {:pre [(is-instance? twitter)]}
+  (.getScreenName twitter))
+
+(defn shutdown [twitter] 
+  {:pre [(is-instance? twitter)]}
+  (.shutdown twitter))
+
+
+

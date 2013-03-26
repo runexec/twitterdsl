@@ -5,6 +5,7 @@
   (:import [twitter4j.conf 
             ConfigurationBuilder]
            [twitter4j 
+            Paging
             TwitterFactory 
             TwitterImpl]))
 
@@ -64,10 +65,17 @@
                     (first config-path)))]
     `(def ~-symbol ~instance)))
 
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Class Test
+
 (defn is-instance? [twitter]
   (= (class twitter)
      TwitterImpl))
 
+(defn is-paging? [p]
+ (= (class p)
+     Paging))
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Core Fns 
 (defn add-rate-limit-status-listener 
   [twitter listener]
   {:pre [(is-instance? twitter)]}

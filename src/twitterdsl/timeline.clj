@@ -1,7 +1,7 @@
 (ns twitterdsl.timeline
   (:use [twitterdsl.core 
          :only [is-instance?
-                is-instance?]])
+                is-paging?]])
   (:import [twitter4j.api
             TimelinesResources]))
 

@@ -1,8 +1,12 @@
 (ns twitterdsl.core
-  (:use [clojure.string :only [split 
-                               split-lines]])
-  (:import [twitter4j.conf ConfigurationBuilder]
-           [twitter4j TwitterFactory TwitterImpl]))
+  (:use [clojure.string 
+         :only [split 
+                split-lines]])
+  (:import [twitter4j.conf 
+            ConfigurationBuilder]
+           [twitter4j 
+            TwitterFactory 
+            TwitterImpl]))
 
 (defn- load-config
   ([] (load-config "api.config"))

@@ -57,12 +57,12 @@
          TwitterFactory.
          .getInstance)))
 
-(defmacro def-twitter [_symbol & config-path]
+(defmacro def-twitter [-symbol & config-path]
   (let [instance (if-not config-path
                    (build-instance)
                    (build-instance 
                     (first config-path)))]
-    `(def ~_symbol ~instance)))
+    `(def ~-symbol ~instance)))
 
 (defn is-instance? [twitter]
   (= (class twitter)
@@ -93,6 +93,3 @@
 (defn shutdown [twitter] 
   {:pre [(is-instance? twitter)]}
   (.shutdown twitter))
-
-
-

@@ -39,12 +39,30 @@
 (defn get-retweets-of-me
   ([twitter]
      {:pre [(is-instance? twitter)]}
-     (.. twitter getRetweetsOfMe))
+     (.getRetweetsOfMe twitter))
   ([twitter paging]
      {:pre [(valid-paging? twitter
                            paging)]}
      (.. twitter 
          (getRetweetsOfMe paging))))
 
+(defn get-user-timeline
+  ([twitter & [name-or-id paging]] 
+     {:pre [(is-instance? twitter)
+            (if-not name-or-id
+              true
+              (or (pos? name-or-id)
+                  (string? name-or-id)))
+            (if-not paging
+              true
+              (is-paging? paging))]}
+     (case (->> [name-or-id paging]
+                (filter true?)
+                count)
+       0 (.getUserTimeline twitter)
+       1 (.. twitter 
+             (getUserTimeline name-or-id))
+       2 (.. twitter 
+             (getUserTimeline name-or-id
+                              paging)))))
 
-;; TODO get-user-timeline

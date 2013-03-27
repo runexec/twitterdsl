@@ -39,8 +39,9 @@
   [twitter userid-or-name txt]
   {:pre [(is-instance? twitter)
          (<= (count txt) 120)
-         (or (string? userid-or-name)
-             (pos? userid-or-name))]}
+         (true?
+          (or (string? userid-or-name)
+              (pos? userid-or-name)))]}
   (.. twitter
       (sendDirectMessage userid-or-name
                          txt)))

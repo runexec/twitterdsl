@@ -105,4 +105,18 @@
   (.. twitter
       (showFriendship sourceid-or-name
                       targetid-or-name)))
+
+(defn update-friendship
+  [twitter 
+   userid-or-name
+   enable-device-notify?
+   retweets?]
+  {:pre [(is-instance? twitter)
+         (user-validator userid-or-name)]}
+  (.. twitter
+      (updateFriendship userid-or-name
+                        (boolean enable-device-notify?)
+                        (boolean retweets?))))
+  
+  
          

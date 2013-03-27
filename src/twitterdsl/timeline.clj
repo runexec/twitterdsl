@@ -45,8 +45,9 @@
      {:pre [(is-instance? twitter)
             (if-not name-or-id
               true
-              (or (pos? name-or-id)
-                  (string? name-or-id)))
+              (true?
+               (or (pos? name-or-id)
+                   (string? name-or-id))))
             (if-not paging
               true
               (is-paging? paging))]}
@@ -59,4 +60,3 @@
        2 (.. twitter 
              (getUserTimeline name-or-id
                               paging)))))
-

@@ -28,12 +28,10 @@
               (keyword k) v)
             (drop-last config))))))) 
 
-(defn- auth-instance [& config-path]
+(defn- auth-instance [& [config-path]]
   (let [config (if-not config-path
                  (load-config)
-                 (-> config-path
-                     first
-                     load-config))
+                 (load-config config-path))
         {:keys [consumer-key 
                 consumer-key-secret
                 access-token
@@ -58,11 +56,10 @@
          TwitterFactory.
          .getInstance)))
 
-(defmacro def-twitter [-symbol & config-path]
+(defmacro def-twitter [-symbol & [config-path]]
   (let [instance (if-not config-path
                    (build-instance)
-                   (build-instance 
-                    (first config-path)))]
+                   (build-instance config-path))]
     `(def ~-symbol ~instance)))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Class Test
@@ -75,7 +72,8 @@
  (= (class p)
      Paging))
 
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Core Fns 
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Core Fns 
+
 (defn add-rate-limit-status-listener 
   [twitter listener]
   {:pre [(is-instance? twitter)]}

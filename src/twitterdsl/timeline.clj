@@ -10,6 +10,12 @@
   (and (is-instance? twitter)
        (is-paging? paging)))
 
+(defn user-validator
+  [name-or-id]
+  (true?
+   (or (string? name-or-id)
+       (pos? name-or-id))))
+
 (defn get-home-timeline
   ([twitter]
      {:pre [(is-instance? twitter)]}
@@ -41,22 +47,18 @@
          (getRetweetsOfMe paging))))
 
 (defn get-user-timeline
-  ([twitter & [name-or-id paging]] 
+  ([twitter]
+     {:pre [(is-instance? twitter)]}
+     (.getUserTimeline twitter))
+  ([twitter name-or-id]
      {:pre [(is-instance? twitter)
-            (if-not name-or-id
-              true
-              (true?
-               (or (pos? name-or-id)
-                   (string? name-or-id))))
-            (if-not paging
-              true
-              (is-paging? paging))]}
-     (case (->> [name-or-id paging]
-                (filter true?)
-                count)
-       0 (.getUserTimeline twitter)
-       1 (.. twitter 
-             (getUserTimeline name-or-id))
-       2 (.. twitter 
-             (getUserTimeline name-or-id
-                              paging)))))
+            (user-validator name-or-id)]}
+     (.. twitter
+         (getUserTimeline name-or-id)))
+  ([twitter name-or-id paging]
+     {:pre [(valid-paging? twitter paging)
+            (user-validator name-or-id)]}
+     (.. twitter
+         (getUserTimeline name-or-id
+                          paging))))
+     

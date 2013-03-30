@@ -1,4 +1,4 @@
-(ns twitterdsl.friend-follow-resource
+(ns twitterdsl.friend-follower-resource
   (:use [twitterdsl.core 
          :only [is-instance?]]))
 

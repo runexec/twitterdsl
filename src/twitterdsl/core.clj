@@ -6,6 +6,8 @@
             ConfigurationBuilder]
            [twitter4j 
             Paging
+            GeoQuery
+            GeoLocation
             TwitterFactory 
             TwitterImpl]))
 
@@ -71,6 +73,14 @@
 (defn is-paging? [p]
  (= (class p)
      Paging))
+
+(defn is-geolocation? [g]
+  (= (class g)
+     GeoLocation))
+
+(defn is-geo-query? [gq]
+  (= (class gq)
+     GeoQuery))
 
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Common Validators

@@ -72,6 +72,14 @@
  (= (class p)
      Paging))
 
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Common Validators
+
+(defn user-validator [userid-or-name]
+  (true?
+   (or (string? userid-or-name)
+       (pos? userid-or-name))))
+
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Core Fns 
 
 (defn add-rate-limit-status-listener 

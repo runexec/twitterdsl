@@ -1,11 +1,7 @@
 (ns twitterdsl.friend-follower-resource
   (:use [twitterdsl.core 
-         :only [is-instance?]]))
-
-(defn user-validator [userid-or-name]
-  (true?
-   (or (string? userid-or-name)
-       (pos? userid-or-name))))
+         :only [is-instance?
+                user-validator]]))
 
 (defn cursor-validator 
   [twitter userid-or-name cursor]

@@ -18,8 +18,9 @@
    :tweet 'twitterdsl.tweet-resource
    :user 'twitterdsl.user-resource
    ;; DSL Specific Namespaces
-   ;; :search twitterdsl.dsl.search
-   ;; :user twitterdsl.dsl.user
+   ;; :search twitterdsl.dsl-search
+   ;; :user twitterdsl.ds-user
+   ;; :tweet twitterdsl.dsl-tweet
    ;; TODO
    })
 
@@ -54,12 +55,13 @@
                   (clojure.string/split (str %) #"/")))
                twitter-api)))
 
-(defmacro with-instance [instance & body]
+(defmacro with-instance
   "Binds all fns of the twitter api that rquire
    the twitter symbol as the first argument. The
    fn is the same name as the original, but in
    the ns from where it's called from. The body
    form is then evaluated"
+  [instance & body]
   (binding [*instance* instance]
     (letfn [(symbol-partial [[fqn -symbol]]
               (let [-symbol (symbol -symbol)
@@ -79,3 +81,9 @@
       (doseq [_ with-instance-symbol-map]
         (symbol-partial _)))
     `(do ~@body)))
+
+(defmacro twitter
+  "Alias for with-instance"
+  [instance & body]
+  `(with-instance ~instance ~body))
+  

@@ -1,7 +1,8 @@
 (ns twitterdsl.favorite-resource
   (:use [twitterdsl.core
          :only [is-instance?
-                is-paging?]])
+                is-paging?
+                user-validator]])
   (:import [twitter4j Paging]))
 
 
@@ -39,4 +40,4 @@
             (is-paging? paging)
             (user-validator userid-or-name)]}
      (.. twitter
-         (getFavorites userid paging))))
+         (getFavorites userid-or-name paging))))

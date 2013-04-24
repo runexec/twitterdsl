@@ -7,7 +7,7 @@
            [twitter4j.api 
             TweetsResources]))
 
-(defn destroyStatus
+(defn destroy-status
   [twitter status-id]
   {:pre [(and (is-instance? twitter)
               (pos? status-id))]}

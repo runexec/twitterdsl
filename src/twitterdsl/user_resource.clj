@@ -1,13 +1,9 @@
 (ns twitterdsl.user-resource
   (:use [twitterdsl.core
-         :only [is-instance?]]
+         :only [is-instance?
+                user-validator]]
         [clojure.java.io
          :only [file]]))
-
-(defn user-validator [user]
-  (true?
-   (or (string? user)
-       (integer? user))))
 
 (defn instance-user?
   [twitter user]

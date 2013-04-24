@@ -1,6 +1,7 @@
 (ns twitterdsl.timeline
   (:use [twitterdsl.core 
          :only [is-instance?
+                user-validator
                 is-paging?]])
   (:import [twitter4j.api
             TimelinesResources]))
@@ -10,21 +11,15 @@
   (and (is-instance? twitter)
        (is-paging? paging)))
 
-(defn user-validator
-  [name-or-id]
-  (true?
-   (or (string? name-or-id)
-       (pos? name-or-id))))
-
 (defn get-home-timeline
   ([twitter]
      {:pre [(is-instance? twitter)]}
-     (.. twitter getHomeTimeLine))
+     (.. twitter getHomeTimeline))
   ([twitter paging]
      {:pre [(valid-paging? twitter
                            paging)]}
      (.. twitter 
-         (getHomeTimeLine paging))))
+         (getHomeTimeline paging))))
 
 (defn get-mentions-timeline
   ([twitter]

@@ -17,11 +17,6 @@
    :timeline 'twitterdsl.timeline
    :tweet 'twitterdsl.tweet-resource
    :user 'twitterdsl.user-resource
-   ;; DSL Specific Namespaces
-   ;; :search twitterdsl.dsl-search
-   ;; :user twitterdsl.ds-user
-   ;; :tweet twitterdsl.dsl-tweet
-   ;; TODO
    })
 
 (defn- load-api-resource
@@ -55,35 +50,42 @@
                   (clojure.string/split (str %) #"/")))
                twitter-api)))
 
+(defn reload-defns
+  "Find all the twitter api calls that
+   require the twitter variable and 
+   define the same symbols in this 
+   namespace with *instance* as the
+   first argument in a (partial) def"
+  []
+  (letfn [(symbol-partial [[fqn -symbol]]
+            (let [-symbol (symbol -symbol)
+                  fqn (->> fqn
+                           str
+                           rest
+                           (apply str)
+                           symbol)]
+              (when (->> (eval `(meta #'~fqn))
+                         :arglists
+                         first
+                         first
+                         (= 'twitter))
+                (eval 
+                 `(def ~-symbol
+                    (partial ~fqn ~*instance*))))))]
+    (doseq [_ with-instance-symbol-map]
+      (symbol-partial _))))
+
 (defmacro with-instance
-  "Binds all fns of the twitter api that rquire
-   the twitter symbol as the first argument. The
-   fn is the same name as the original, but in
-   the ns from where it's called from. The body
-   form is then evaluated"
   [instance & body]
   (binding [*instance* instance]
-    (letfn [(symbol-partial [[fqn -symbol]]
-              (let [-symbol (symbol -symbol)
-                    fqn (->> fqn
-                             str
-                             rest
-                             (apply str)
-                             symbol)]
-                (when (->> (eval `(meta #'~fqn))
-                           :arglists
-                           first
-                           first
-                           (= 'twitter))
-                  (eval 
-                   `(def ~-symbol
-                      (partial ~fqn ~*instance*))))))]
-      (doseq [_ with-instance-symbol-map]
-        (symbol-partial _)))
+    (reload-defns)
     `(do ~@body)))
 
 (defmacro twitter
   "Alias for with-instance"
   [instance & body]
-  `(with-instance ~instance ~body))
-  
+  `(with-instance ~instance ~@body))
+
+;; Init so other namespace can refer to
+;; the api wraps
+(reload-defns)

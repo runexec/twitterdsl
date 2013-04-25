@@ -7,12 +7,14 @@
          (let [tweets (search/with 
                        (search/query "Clojure")
                        (search/get-tweets))]
-           (tweet/with
-            (tweet/parse (first tweets))
-            (println "Message:"
-                     (tweet/get-text)
-                     "\n"
-                     (tweet/get-created-date)))))
+           (doseq [t tweets
+                   :let [status (tweet/parse t)]]
+             (tweet/with 
+              status
+              (user/with
+               (user/parse (tweet/get-user))
+               (println
+                (user/get-screen-name) " - " (tweet/get-text) "\n"))))))
 
 ```
 
@@ -92,6 +94,100 @@ Work in Progress
 
 ```
 
+###user/ API###
+
+```clojure
+(get-bigger-profile-image-url)
+
+(get-bigger-profile-image-url-https)
+
+(get-created-date)
+
+(get-description)
+
+(get-description-url-entities)
+
+(get-favourites-count)
+
+(get-followers-count)
+
+(get-friends-count)
+
+(get-user-id)
+
+(get-language)
+
+(get-listed-count)
+
+(get-location)
+
+(get-mini-profile-image-url)
+
+(get-mini-profile-image-url-https)
+
+(get-name)
+
+(get-original-profile-image-url)
+
+(get-original-profile-image-url-https)
+
+(get-profile-background-color)
+
+(get-profile-background-image-url)
+
+(get-profile-background-image-url-https)
+
+(get-profile-banner-mobile-retina-url)
+
+(get-profile-banner-mobile-url)
+
+(get-profile-banner-url)
+
+(get-profile-image-url)
+
+(get-profile-image-url-https)
+
+(get-profile-link-color)
+
+(get-profile-sidebar-border-color)
+
+(get-profile-sidebar-fill-color)
+
+(get-profile-text-color)
+
+(get-screen-name)
+
+(get-status)
+
+(get-statuses-count)
+
+(get-timezone)
+
+(get-user-url)
+
+(get-url-entity)
+
+(get-utc-offset)
+
+(contributors-enabled?)
+
+(follow-request-sent?)
+
+(geo-enabled?)
+
+(profile-background-tiled?)
+
+(profile-use-background-image?)
+
+(protected?)
+
+(show-all-inline-media?)
+
+(translator?)
+
+(verified?)
+
+```
 
 ## License
 

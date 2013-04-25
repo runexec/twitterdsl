@@ -3,18 +3,19 @@
 
 (def-twitter instance)
 
-(twitter instance
-         (let [tweets (search/with 
-                       (search/query "Clojure")
-                       (search/get-tweets))]
-           (doseq [t tweets
-                   :let [status (tweet/parse t)]]
-             (tweet/with 
-              status
-              (user/with
-               (user/parse (tweet/get-user))
-               (println
-                (user/get-screen-name) " - " (tweet/get-text) "\n"))))))
+(twitter
+ instance
+ (let [tweets (search/with 
+               (search/query "Clojure")
+               (search/get-tweets))]
+   (doseq [t tweets
+           :let [status (tweet/parse t)]]
+     (tweet/with 
+      status
+      (user/with
+       (user/parse (tweet/get-user))
+       (println
+        (user/get-screen-name) " - " (tweet/get-text) "\n"))))))
 
 ```
 

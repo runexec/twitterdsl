@@ -90,5 +90,5 @@
 ;; the api wraps
 (reload-defns)
 
-(require '[twitterdsl.dsl-search :as search])
-(require '[twitterdsl.dsl-tweet-handler :as tweet])
+(require '[twitterdsl.dsl-search :as search]
+         '[twitterdsl.dsl-tweet-handler :as tweet])

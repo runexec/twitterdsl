@@ -43,16 +43,13 @@
 (defn get-since-id []
   (:search-instance *query-results*))
 
-(defn tweets []
-  (:tweets *query-results*))
-
 (defn has-next? []
   (:how-many? *query-results*))
 
 (defn has-many? []
   (:how-many? *query-results*))
 
-(defn refresh-url []
+(defn get-refresh-url []
   (:refresh-url *query-results*))
 
 (defn get-since-id []

@@ -1,10 +1,15 @@
-<h3>Removed to make a nicer re-write. Will update shortly</h3>
-
-
 ```clojure
-(ns testing.core
-  (:use twitterdsl.core)
-  (:require [twitterdsl.direct-message :as direct-message]))
+(use 'twitterdsl.dsl)
+
+(def-twitter instance)
+
+(twitter instance
+         (let [tweets (search/with 
+                       (search/query "Clojure")
+                       (search/get-tweets))]
+           (tweet/with 
+            (tweet/parse (first tweets))
+            (tweet/get-created-date))))
 ```
 ## License
 

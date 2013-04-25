@@ -86,6 +86,9 @@
   [instance & body]
   `(with-instance ~instance ~@body))
 
-;; Init so other namespace can refer to
+;; Init so other namespaces can refer to
 ;; the api wraps
 (reload-defns)
+
+(require '[twitterdsl.dsl-search :as search])
+

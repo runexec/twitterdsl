@@ -91,4 +91,5 @@
 (reload-defns)
 
 (require '[twitterdsl.dsl-search :as search]
-         '[twitterdsl.dsl-tweet-handler :as tweet])
+         '[twitterdsl.dsl-tweet-handler :as tweet]
+         '[twitterdsl.dsl-user-handler :as user])

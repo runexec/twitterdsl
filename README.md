@@ -36,6 +36,20 @@ Work in Progress
 (tweet [msg])
 ```
 
+### message/ API ###
+
+```clojure
+(destroy [id])
+
+(get-messages [& paging])
+
+(get-sent-messages [& paing])
+
+(send [username-or-id msg])
+
+(show [id])
+```
+
 ### tweet/ API###
 
 ```clojure

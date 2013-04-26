@@ -24,7 +24,6 @@
    {:symbols :full-name}"
   [resource-type]
   (let [api-ns (resource-type twitter-api-resource)]
-    (println "requiring" api-ns)
     (require api-ns)
     (let [publics (ns-publics api-ns)]
       {:symbols (keys publics)
@@ -93,4 +92,6 @@
 (require '[twitterdsl.dsl-search :as search]
          '[twitterdsl.dsl-tweet-handler :as tweet]
          '[twitterdsl.dsl-user-handler :as user]
-         '[twitterdsl.dsl-status :as status])
+         '[twitterdsl.dsl-status :as status]
+         '[twitterdsl.dsl-direct-message :as message])
+

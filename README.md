@@ -101,6 +101,20 @@ Work in Progress
 
 ```
 
+### favorite/ API ###
+
+```clojure
+(mark [tweet-id])
+
+(unmark [tweet-id])
+
+(favorites [])
+
+(favorites [userid-or-name-or-paging])
+
+(favorites [userid-or-name paging])
+```
+
 ### tweet/ API###
 
 ```clojure

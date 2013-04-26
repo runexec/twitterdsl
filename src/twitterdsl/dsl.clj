@@ -114,6 +114,5 @@
          '[twitterdsl.dsl-tweet :as tweet]
          '[twitterdsl.dsl-user :as user]
          '[twitterdsl.dsl-status :as status]
-         '[twitterdsl.dsl-direct-message :as message])
-
-
+         '[twitterdsl.dsl-direct-message :as message]
+         '[twitterdsl.dsl-favorite :as favorite])

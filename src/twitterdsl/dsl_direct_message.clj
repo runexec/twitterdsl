@@ -11,7 +11,7 @@
 
 (defn sent-messages [& [paging]]
   (let [_ twitterdsl.dsl/get-sent-direct-messages]
-    (if paing (_ paging) (_))))
+    (if paging (_ paging) (_))))
 
 (defn send [username-or-id msg]
   (twitterdsl.dsl/send-direct-message

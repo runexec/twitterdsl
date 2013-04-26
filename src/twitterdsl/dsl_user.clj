@@ -1,5 +1,5 @@
 (ns ^{:doc "Can only be loaded after twitterdsl.dsl"}
-  twitterdsl.dsl-user-handler)
+  twitterdsl.dsl-user)
 
 (def ^:dynamic *user*)
 
@@ -57,119 +57,119 @@
      :translator? (.isTranslator _)
      :verified? (.isVerified _)}))
 
-(defn get-bigger-profile-image-url []
+(defn bigger-profile-image-url []
   (:bigger-profile-image-url *user*))
 
-(defn get-bigger-profile-image-url-https []
+(defn bigger-profile-image-url-https []
   (:bigger-profile-image-url-https *user*))
 
-(defn get-created-date []
+(defn created-date []
   (:created-date *user*))
 
-(defn get-description []
+(defn description []
   (:description *user*))
 
-(defn get-description-url-entities []
+(defn description-url-entities []
   (:description-url-entities *user*))
 
-(defn get-favourites-count []
+(defn favourites-count []
   (:favourites-count *user*))
 
-(defn get-followers-count []
+(defn followers-count []
   (:followers-count *user*))
 
-(defn get-friends-count []
+(defn friends-count []
   (:friends-count *user*))
 
-(defn get-user-id []
+(defn user-id []
   (:user-id *user*))
 
-(defn get-language []
+(defn language []
   (:language *user*))
 
-(defn get-listed-count []
+(defn listed-count []
   (:listed-count *user*))
 
-(defn get-location []
+(defn location []
   (:location *user*))
 
-(defn get-mini-profile-image-url []
+(defn mini-profile-image-url []
   (:mini-profile-image-url *user*))
 
-(defn get-mini-profile-image-url-https []
+(defn mini-profile-image-url-https []
   (:mini-profile-image-url-https *user*))
 
-(defn get-name []
+(defn name []
   (:name *user*))
 
-(defn get-original-profile-image-url []
+(defn original-profile-image-url []
   (:original-profile-image-url *user*))
 
-(defn get-original-profile-image-url-https []
+(defn original-profile-image-url-https []
   (:original-profile-image-url-https *user*))
 
-(defn get-profile-background-color []
+(defn profile-background-color []
   (:profile-background-color *user*))
 
-(defn get-profile-background-image-url []
+(defn profile-background-image-url []
   (:profile-background-image-url *user*))
 
-(defn get-profile-background-image-url-https []
+(defn profile-background-image-url-https []
   (:profile-background-image-url-https *user*))
 
 (comment 
-  (defn get-profile-banner-ipad-retina-url []
+  (defn profile-banner-ipad-retina-url []
     (:profile-banner-ipad-retina-url *user*))
 
-  (defn get-profile-banner-ipad-url []
+  (defn profile-banner-ipad-url []
     (:profile-banner-ipad-url *user*)))
 
-(defn get-profile-banner-mobile-retina-url []
+(defn profile-banner-mobile-retina-url []
   (:profile-banner-mobile-retina-url *user*))
 
-(defn get-profile-banner-mobile-url []
+(defn profile-banner-mobile-url []
   (:profile-banner-mobile-url *user*))
 
-(defn get-profile-banner-url []
+(defn profile-banner-url []
   (:profile-banner-url *user*))
 
-(defn get-profile-image-url []
+(defn profile-image-url []
   (:profile-image-url *user*))
 
-(defn get-profile-image-url-https []
+(defn profile-image-url-https []
   (:profile-image-url-https *user*))
 
-(defn get-profile-link-color []
+(defn profile-link-color []
   (:profile-link-color *user*))
 
-(defn get-profile-sidebar-border-color []
+(defn profile-sidebar-border-color []
   (:profile-sidebar-border-color *user*))
 
-(defn get-profile-sidebar-fill-color []
+(defn profile-sidebar-fill-color []
   (:profile-sidebar-fill-color *user*))
 
-(defn get-profile-text-color []
+(defn profile-text-color []
   (:profile-text-color *user*))
 
-(defn get-screen-name []
+(defn screen-name []
   (:screen-name *user*))
 
-(defn get-status []
+(defn status []
   (:status *user*))
 
-(defn get-statuses-count []
+(defn statuses-count []
   (:statuses-count *user*))
 
-(defn get-timezone []
+(defn timezone []
   (:timezone *user*))
 
-(defn get-user-url []
+(defn user-url []
   (:user-url *user*))
 
-(defn get-url-entity []
+(defn url-entity []
   (:url-entity *user*))
 
-(defn get-utc-offset []
+(defn utc-offset []
   (:utc-offset *user*))
 
 (defn contributors-enabled? []

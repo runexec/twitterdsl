@@ -1,5 +1,5 @@
 (ns ^{:doc "Can only be loaded after twitterdsl.dsl"}
-  twitterdsl.dsl-tweet-handler)
+  twitterdsl.dsl-tweet)
 
 (def ^:dynamic *status*)
 
@@ -29,46 +29,46 @@
   `(binding [*status* ~parse-results]
      ~@body))
 
-(defn get-contributors []
+(defn contributors []
   (:contributors *status*))
 
-(defn get-created-date []
+(defn created-date []
   (:created-date *status*))
 
-(defn get-current-user-retweet-id []
+(defn current-user-retweet-id []
   (:current-user-retweet-id *status*))
 
-(defn get-geo-location []
+(defn geo-location []
   (:geo-location *status*))
 
-(defn get-tweet-id []
+(defn tweet-id []
   (:tweet-id *status*))
 
-(defn get-reply-to-screen-name []
+(defn reply-to-screen-name []
   (:in-reply-to-screen-name *status*))
 
-(defn get-reply-to-status-id []
+(defn reply-to-status-id []
   (:in-reply-to-status-id *status*))
 
-(defn get-reply-to-user-id []
+(defn reply-to-user-id []
   (:in-reply-to-user-id *status*))
 
-(defn get-place []
+(defn place []
   (:place *status*))
 
-(defn get-retweet-count []
+(defn retweet-count []
   (:retweet-count *status*))
 
-(defn get-retweet-status []
+(defn retweet-status []
   (:retweet-status *status*))
 
-(defn get-source []
+(defn source []
   (:source *status*))
 
-(defn get-text []
+(defn text []
   (:text *status*))
 
-(defn get-user []
+(defn user []
   (:user *status*))
 
 (defn favorited? []

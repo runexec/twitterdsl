@@ -22,25 +22,25 @@
   `(binding [*query-results* ~query-results]
      ~@body))
 
-(defn get-instance []
+(defn instance []
   (:search-instance *query-results*))
 
-(defn get-next-page-instance []
+(defn next-page-instance []
   (:next-page-instance *query-results*))
 
-(defn get-access-level []
+(defn access-level []
   (:access-level *query-results*))
 
-(defn get-rate-limit-status []
+(defn rate-limit-status []
   (:rate-limit-status *query-results*))
 
-(defn get-complete-time []
+(defn complete-time []
   (:complete-time *query-results*))
 
-(defn get-max-id []
+(defn max-id []
   (:max-id *query-results*))
 
-(defn get-since-id []
+(defn since-id []
   (:search-instance *query-results*))
 
 (defn has-next? []
@@ -49,11 +49,11 @@
 (defn has-many? []
   (:how-many? *query-results*))
 
-(defn get-refresh-url []
+(defn refresh-url []
   (:refresh-url *query-results*))
 
-(defn get-since-id []
+(defn since-id []
   (:since-id *query-results*))
 
-(defn get-tweets []
+(defn tweets []
   (:tweets *query-results*))

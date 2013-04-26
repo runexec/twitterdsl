@@ -90,8 +90,8 @@
 (reload-defns)
 
 (require '[twitterdsl.dsl-search :as search]
-         '[twitterdsl.dsl-tweet-handler :as tweet]
-         '[twitterdsl.dsl-user-handler :as user]
+         '[twitterdsl.dsl-tweet :as tweet]
+         '[twitterdsl.dsl-user :as user]
          '[twitterdsl.dsl-status :as status]
          '[twitterdsl.dsl-direct-message :as message])
 

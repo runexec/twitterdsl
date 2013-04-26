@@ -7,15 +7,15 @@
  instance
  (let [tweets (search/with 
                (search/query "Clojure")
-               (search/get-tweets))]
+               (search/tweets))]
    (doseq [t tweets
            :let [status (tweet/parse t)]]
      (tweet/with 
       status
       (user/with
-       (user/parse (tweet/get-user))
+       (user/parse (tweet/user))
        (println
-        (user/get-screen-name) " - " (tweet/get-text) "\n"))))))
+        (user/screen-name) " - " (tweet/text) "\n"))))))
 
 ```
 
@@ -25,9 +25,9 @@ Work in Progress
 ```clojure
 (destroy [status-id])
 
-(get-oembed [oembed-req])
+(oembed [oembed-req])
 
-(get-retweets [status-id])
+(retweets [status-id])
 
 (retweet [status-id])
 
@@ -41,13 +41,38 @@ Work in Progress
 ```clojure
 (destroy [id])
 
-(get-messages [& paging])
+(messages [& paging])
 
-(get-sent-messages [& paing])
+(sent-messages [& paing])
 
 (send [username-or-id msg])
 
 (show [id])
+
+(parse [dm])
+
+(with parse-result & body)
+
+;; message/with fns
+
+(created-date [])
+
+(id [])
+
+(recipient [])
+
+(recipient-id [])
+
+(recipient-screen-name [])
+
+(sender [])
+
+(sender-id [])
+
+(sender-screen-name [])
+
+(message [])
+
 ```
 
 ### tweet/ API###
@@ -57,33 +82,35 @@ Work in Progress
 
 (with [parse-results & body])
 
-(get-contributors)
+;; tweet/with fns
 
-(get-created-date)
+(contributors)
 
-(get-current-user-retweet-id)
+(created-date)
 
-(get-geo-location)
+(current-user-retweet-id)
 
-(get-tweet-id)
+(geo-location)
 
-(get-reply-to-screen-name)
+(tweet-id)
 
-(get-reply-to-status-id)
+(reply-to-screen-name)
 
-(get-reply-to-user-id)
+(reply-to-status-id)
 
-(get-place)
+(reply-to-user-id)
 
-(get-retweet-count)
+(place)
 
-(get-retweet-status)
+(retweet-count)
 
-(get-source)
+(retweet-status)
 
-(get-text)
+(source)
 
-(get-user)
+(text)
+
+(user)
 
 (favorited?)
 
@@ -98,106 +125,120 @@ Work in Progress
 
 ### search/ API###
 ```clojure
-(get-instance)
 
-(get-next-page-instance)
+(query [search])
 
-(get-access-level)
+(with [query-results & body])
 
-(get-rate-limit-status)
+;; search/with fns
 
-(get-complete-time)
+(instance)
 
-(get-max-id)
+(next-page-instance)
 
-(get-since-id)
+(access-level)
+
+(rate-limit-status)
+
+(complete-time)
+
+(max-id)
+
+(since-id)
 
 (has-next?)
 
 (has-many?)
 
-(get-refresh-url)
+(refresh-url)
 
-(get-since-id)
+(since-id)
 
-(get-tweets)
+(tweets)
 
 ```
 
 ### user/ API ###
 
 ```clojure
-(get-bigger-profile-image-url)
 
-(get-bigger-profile-image-url-https)
+(parse [user])
 
-(get-created-date)
+(with [parsed-result & body])
 
-(get-description)
+;; user/with fns
 
-(get-description-url-entities)
+(bigger-profile-image-url)
 
-(get-favourites-count)
+(bigger-profile-image-url-https)
 
-(get-followers-count)
+(created-date)
 
-(get-friends-count)
+(description)
 
-(get-user-id)
+(description-url-entities)
 
-(get-language)
+(favourites-count)
 
-(get-listed-count)
+(followers-count)
 
-(get-location)
+(friends-count)
 
-(get-mini-profile-image-url)
+(user-id)
 
-(get-mini-profile-image-url-https)
+(language)
 
-(get-name)
+(listed-count)
 
-(get-original-profile-image-url)
+(location)
 
-(get-original-profile-image-url-https)
+(mini-profile-image-url)
 
-(get-profile-background-color)
+(mini-profile-image-url-https)
 
-(get-profile-background-image-url)
+(name)
 
-(get-profile-background-image-url-https)
+(original-profile-image-url)
 
-(get-profile-banner-mobile-retina-url)
+(original-profile-image-url-https)
 
-(get-profile-banner-mobile-url)
+(profile-background-color)
 
-(get-profile-banner-url)
+(profile-background-image-url)
 
-(get-profile-image-url)
+(profile-background-image-url-https)
 
-(get-profile-image-url-https)
+(profile-banner-mobile-retina-url)
 
-(get-profile-link-color)
+(profile-banner-mobile-url)
 
-(get-profile-sidebar-border-color)
+(profile-banner-url)
 
-(get-profile-sidebar-fill-color)
+(profile-image-url)
 
-(get-profile-text-color)
+(profile-image-url-https)
 
-(get-screen-name)
+(profile-link-color)
 
-(get-status)
+(profile-sidebar-border-color)
 
-(get-statuses-count)
+(profile-sidebar-fill-color)
 
-(get-timezone)
+(profile-text-color)
 
-(get-user-url)
+(screen-name)
 
-(get-url-entity)
+(status)
 
-(get-utc-offset)
+(statuses-count)
+
+(timezone)
+
+(user-url)
+
+(url-entity)
+
+(utc-offset)
 
 (contributors-enabled?)
 

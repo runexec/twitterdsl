@@ -5,13 +5,13 @@
 (defn destroy [id]
   (twitterdsl.dsl/destroy-direct-message id))
 
-(defn messages [& paging]
+(defn messages [& [paging]]
   (let [_ twitterdsl.dsl/get-direct-messages]
     (if paging (_ paging) (_))))
 
-(defn sent-messages [& paing]
+(defn sent-messages [& [paging]]
   (let [_ twitterdsl.dsl/get-sent-direct-messages]
-    (if paing (_ paing) (_))))
+    (if paing (_ paging) (_))))
 
 (defn send [username-or-id msg]
   (twitterdsl.dsl/send-direct-message

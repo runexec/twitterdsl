@@ -41,9 +41,9 @@ Work in Progress
 ```clojure
 (destroy [id])
 
-(messages [& paging])
+(messages [& [paging]])
 
-(sent-messages [& paing])
+(sent-messages [& [paging]])
 
 (send [username-or-id msg])
 
@@ -55,23 +55,23 @@ Work in Progress
 
 ;; message/with fns
 
-(created-date [])
+(created-date)
 
-(id [])
+(id)
 
-(recipient [])
+(recipient)
 
-(recipient-id [])
+(recipient-id)
 
-(recipient-screen-name [])
+(recipient-screen-name)
 
-(sender [])
+(sender)
 
-(sender-id [])
+(sender-id)
 
-(sender-screen-name [])
+(sender-screen-name)
 
-(message [])
+(message)
 
 ```
 

@@ -1,3 +1,5 @@
+#### Basics ####
+
 ```clojure
 (use 'twitterdsl.dsl)
 
@@ -18,6 +20,30 @@
         (user/screen-name) " - " (tweet/text) "\n"))))))
 
 ```
+
+#### Triggers ####
+
+```clojure
+
+(add-trigger "clojure"
+             #(println
+               (tweet/created-date) " - " (tweet/text)))
+
+(twitter
+ instance
+ (let [tweets (search/with 
+               (search/query "Clojure")
+               (search/tweets))]
+   (doseq [t tweets
+           :let [status (tweet/parse t)]]
+     ;; Calls All Triggers 
+     (tweet/with status))))
+
+(remove-trigger "clojure")
+
+```
+
+
 
 Work in Progress
 

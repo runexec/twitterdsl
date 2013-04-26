@@ -27,6 +27,11 @@
 
 (defmacro with [parse-results & body]
   `(binding [*status* ~parse-results]
+     (doseq [t# @twitterdsl.dsl/a-triggers
+             :let [trigger# (:trigger t#)
+                   name# (:name t#)]]
+       (println "Init trigger" name#)
+       (trigger#))
      ~@body))
 
 (defn contributors []

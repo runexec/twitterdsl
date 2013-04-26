@@ -85,6 +85,27 @@
   [instance & body]
   `(with-instance ~instance ~@body))
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Nothing above this line requires anything below
+
+
+(def a-triggers (atom '()))
+
+(defn add-trigger 
+  [trigger-name fn-trigger]
+  (swap! a-triggers
+         conj
+         {:name trigger-name
+          :trigger fn-trigger}))
+
+(defn remove-trigger [trigger-name]
+  (swap! a-triggers
+         (fn [x]
+           (filter
+            #(not= trigger-name
+                   (:name %))
+            x))))
+              
 ;; Init so other namespaces can refer to
 ;; the api wraps
 (reload-defns)
@@ -94,4 +115,5 @@
          '[twitterdsl.dsl-user :as user]
          '[twitterdsl.dsl-status :as status]
          '[twitterdsl.dsl-direct-message :as message])
+
 

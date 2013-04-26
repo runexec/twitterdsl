@@ -92,4 +92,5 @@
 
 (require '[twitterdsl.dsl-search :as search]
          '[twitterdsl.dsl-tweet-handler :as tweet]
-         '[twitterdsl.dsl-user-handler :as user])
+         '[twitterdsl.dsl-user-handler :as user]
+         '[twitterdsl.dsl-status :as status])

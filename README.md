@@ -21,6 +21,21 @@
 
 Work in Progress
 
+### status/ API ###
+```clojure
+(destroy [status-id])
+
+(get-oembed [oembed-req])
+
+(get-retweets [status-id])
+
+(retweet [status-id])
+
+(show [status-id])
+
+(tweet [msg])
+```
+
 ### tweet/ API###
 
 ```clojure
@@ -95,7 +110,7 @@ Work in Progress
 
 ```
 
-###user/ API###
+### user/ API ###
 
 ```clojure
 (get-bigger-profile-image-url)
@@ -189,7 +204,6 @@ Work in Progress
 (verified?)
 
 ```
-
 ## License
 
 Copyright © 2013 FIXME

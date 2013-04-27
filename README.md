@@ -1,4 +1,4 @@
-Work in Progress
+#### TwitterDSL Documentation ####
 
 <a href="#basics">Basics</a><br />
 <a href="#triggers">Triggers</a><br />
@@ -13,6 +13,7 @@ Work in Progress
 <a href="#friendship-api">Friendship</a><br />
 <a href="#relationship-api">Relationship</a><br />
 
+Work in Progress
 
 #### Basics ####
 

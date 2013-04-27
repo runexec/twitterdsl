@@ -297,8 +297,26 @@ Work in Progress
 (translator?)
 
 (verified?)
+```
+
+### timeline/ API ###
+
+```clojure
+
+(tweets [& [paging]])
+
+(mentions [& [paging]])
+
+(retweets [& [paging]])
+
+(user-timeline
+ ([])
+ ([username-or-id])
+ ([username-or-id paging]))
 
 ```
+
+
 ## License
 
 Copyright © 2013 FIXME

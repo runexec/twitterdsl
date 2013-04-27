@@ -2,6 +2,7 @@
 
 <a href="#basics">Basics</a><br />
 <a href="#triggers">Triggers</a><br />
+<a href="#twitter-instance-api">Twitter Instance</a><br />
 <a href="#status-api">Status</a><br />
 <a href="#message-api">Message</a><br />
 <a href="#favorite-api">Favorite</a><br />
@@ -58,6 +59,26 @@ Work in Progress
 
 (remove-trigger "clojure")
 
+```
+
+### Twitter Instance API ###
+``clojure
+
+(def-twitter symbol & [config-path])
+
+;; twitter/with fns
+
+(add-rate-limit-status-listener listener)
+
+(authorization)
+
+(configuration)
+
+(user-id)
+
+(screen-name)
+
+(shutdown)
 ```
 
 ### status/ API ###

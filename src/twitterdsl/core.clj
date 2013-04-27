@@ -98,19 +98,19 @@
   (.. twitter 
       (addRateLimitStatusListener listener)))
 
-(defn get-authorization [twitter]
+(defn authorization [twitter]
   {:pre [(is-instance? twitter)]}
   (.getAuthorization twitter))
 
-(defn get-configuration [twitter]
+(defn configuration [twitter]
   {:pre [(is-instance? twitter)]}
   (.getConfiguration twitter))
 
-(defn get-user-id [twitter]
+(defn user-id [twitter]
   {:pre [(is-instance? twitter)]}
   (.getId twitter))
 
-(defn get-screen-name [twitter]
+(defn screen-name [twitter]
   {:pre [(is-instance? twitter)]}
   (.getScreenName twitter))
 

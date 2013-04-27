@@ -76,9 +76,9 @@
 
 (defmacro with-instance
   [instance & body]
-  (binding [*instance* instance]
+  `(binding [*instance* ~instance]
     (reload-defns)
-    `(do ~@body)))
+    ~@body))
 
 (defmacro twitter
   "Alias for with-instance"

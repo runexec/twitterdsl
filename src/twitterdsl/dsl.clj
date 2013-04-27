@@ -86,7 +86,7 @@
   `(with-instance ~instance ~@body))
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Nothing above this line requires anything below
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Trigger Handlers
 
 
 (def a-triggers (atom '()))
@@ -105,6 +105,8 @@
             #(not= trigger-name
                    (:name %))
             x))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Init and Require
               
 ;; Init so other namespaces can refer to
 ;; the api wraps

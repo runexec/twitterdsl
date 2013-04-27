@@ -116,6 +116,8 @@
          '[twitterdsl.dsl-status :as status]
          '[twitterdsl.dsl-direct-message :as message]
          '[twitterdsl.dsl-favorite :as favorite]
-         '[twitterdsl.dsl-timeline :as timeline])
-
+         '[twitterdsl.dsl-timeline :as timeline]
+         '[twitterdsl.dsl-friend :as follower]
+         '[twitterdsl.dsl-friendship :as friendship]
+         '[twitterdsl.dsl-relationship :as relationship])
 

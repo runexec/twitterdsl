@@ -62,7 +62,7 @@ Work in Progress
 ```
 
 ### Twitter Instance API ###
-``clojure
+```clojure
 
 (def-twitter symbol & [config-path])
 

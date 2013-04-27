@@ -302,7 +302,6 @@ Work in Progress
 ### timeline/ API ###
 
 ```clojure
-
 (tweets [& [paging]])
 
 (mentions [& [paging]])
@@ -313,9 +312,94 @@ Work in Progress
  ([])
  ([username-or-id])
  ([username-or-id paging]))
+```
+
+### follower/ API ###
+
+```clojure
+(defn add [userid-or-name])
+
+(defn delete [userid-or-name])
+
+(defn follower-ids
+  ([cursor])
+  ([userid-or-name cursor]))
+
+(defn follower-list [userid-or-name cursor])
+
+(defn my-follower-ids [cursor]
+
+(defn follower-ids-of [userid-or-name cursor])
+
+(defn follower-list-of [userid-or-name cursor])
+
+(defn incoming [cursor])
+
+(defn lookup [coll-userids-or-names])
+
+(defn show-friendship
+  [sourceid-or-name
+   targetid-or-name])
+
+(defn update-friendship
+  [userid-or-name
+   enable-device-notify?
+   retweets?])
 
 ```
 
+### friendship/ API ###
+
+```clojure
+(parse [friendship])
+
+(with [parse-result & body])
+
+;; friendship/with fns
+
+(id)
+
+(name)
+
+(screen-name)
+
+(followed-by?)
+
+(following?)
+
+```
+
+### relationship/ ###
+
+```clojure
+(parse [relationship])
+
+(with [parse-result & body])
+
+;; relationship/with fns
+
+(source-id)
+
+(source-user-screen-name)
+
+(target-userid)
+
+(target-screen-name)
+
+(source-blocking-target?)
+
+(source-followed-by-target?)
+
+(source-following-target?)
+
+(source-notification-enabled?)
+
+(source-wants-retweets?)
+
+(target-followed-by-source?)
+
+(target-following-source?)
+```
 
 ## License
 

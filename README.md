@@ -9,7 +9,7 @@
 <a href="#search-api">Search</a><br />
 <a href="#user-api">User</a><br />
 <a href="#timeline-api">Timeline</a><br />
-<a href="#follower-api">Follower</a><br />
+<a href="#following-api">Follow</a><br />
 <a href="#friendship-api">Friendship</a><br />
 <a href="#relationship-api">Relationship</a><br />
 
@@ -327,7 +327,7 @@ Work in Progress
  ([username-or-id paging]))
 ```
 
-### follower/ API ###
+### following/ API ###
 
 ```clojure
 (add [userid-or-name])

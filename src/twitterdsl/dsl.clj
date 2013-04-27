@@ -117,7 +117,7 @@
          '[twitterdsl.dsl-direct-message :as message]
          '[twitterdsl.dsl-favorite :as favorite]
          '[twitterdsl.dsl-timeline :as timeline]
-         '[twitterdsl.dsl-friend :as follower]
+         '[twitterdsl.dsl-friend :as following]
          '[twitterdsl.dsl-friendship :as friendship]
          '[twitterdsl.dsl-relationship :as relationship])
 

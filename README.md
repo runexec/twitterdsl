@@ -1,3 +1,19 @@
+Work in Progress
+
+<a href="#basics">Basics</a><br />
+<a href="#triggers">Triggers</a><br />
+<a href="#status-api">Status</a><br />
+<a href="#message-api">Message</a><br />
+<a href="#favorite-api">Favorite</a><br />
+<a href="#tweet-api">Tweet</a><br />
+<a href="#search-api">Search</a><br />
+<a href="#user-api">User</a><br />
+<a href="#timeline-api">Timeline</a><br />
+<a href="#follower-api">Follower</a><br />
+<a href="#friendship-api">Friendship</a><br />
+<a href="#relationship-api">Relationship</a><br />
+
+
 #### Basics ####
 
 ```clojure
@@ -42,10 +58,6 @@
 (remove-trigger "clojure")
 
 ```
-
-
-
-Work in Progress
 
 ### status/ API ###
 ```clojure
@@ -317,31 +329,31 @@ Work in Progress
 ### follower/ API ###
 
 ```clojure
-(defn add [userid-or-name])
+(add [userid-or-name])
 
-(defn delete [userid-or-name])
+(delete [userid-or-name])
 
-(defn follower-ids
+(follower-ids
   ([cursor])
   ([userid-or-name cursor]))
 
-(defn follower-list [userid-or-name cursor])
+(follower-list [userid-or-name cursor])
 
-(defn my-follower-ids [cursor]
+(my-follower-ids [cursor]
 
-(defn follower-ids-of [userid-or-name cursor])
+(follower-ids-of [userid-or-name cursor])
 
-(defn follower-list-of [userid-or-name cursor])
+(follower-list-of [userid-or-name cursor])
 
-(defn incoming [cursor])
+(incoming [cursor])
 
-(defn lookup [coll-userids-or-names])
+(lookup [coll-userids-or-names])
 
-(defn show-friendship
+(show-friendship
   [sourceid-or-name
    targetid-or-name])
 
-(defn update-friendship
+(update-friendship
   [userid-or-name
    enable-device-notify?
    retweets?])
@@ -369,7 +381,7 @@ Work in Progress
 
 ```
 
-### relationship/ ###
+### relationship/ API###
 
 ```clojure
 (parse [relationship])

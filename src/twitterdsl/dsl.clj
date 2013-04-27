@@ -86,7 +86,7 @@
   `(with-instance ~instance ~@body))
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;; Nothing above this line requires anything below
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Nothing above this line requires anything below
 
 
 (def a-triggers (atom '()))
@@ -120,4 +120,33 @@
          '[twitterdsl.dsl-friend :as following]
          '[twitterdsl.dsl-friendship :as friendship]
          '[twitterdsl.dsl-relationship :as relationship])
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Triggers
+
+(defn enable-logging [& [log-file-path]]
+  (let [fp (or log-file-path
+               (-> (java.util.Date.)
+                   str
+                   (clojure.string/replace #"\s" "-")
+                   (clojure.string/replace #"\:" "-")))]
+    (add-trigger
+     "logging-enabled"
+     #(let [msg (tweet/text)
+            date (str (tweet/created-date))
+            [user-name
+             user-screen-name] (user/with
+                                (user/parse (tweet/user))
+                                [(user/name)
+                                 (user/screen-name)])
+            log (format "%s (%s - %s) %s\n\n"
+                        date
+                        user-screen-name
+                        user-name
+                        msg)]
+        (spit fp
+              log
+              :append true)))))
+
+(defn disable-logging []
+  (remove-trigger "logging-enabled"))
 

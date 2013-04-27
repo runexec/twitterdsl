@@ -59,6 +59,16 @@ Work in Progress
 
 (remove-trigger "clojure")
 
+(enable-logging "/tmp/outfile")
+
+(twitter instance 
+         (doseq [_ (timeline/tweets)
+                 :let [t (tweet/parse _)]]
+           (tweet/with t))
+         (println "Done logging"))
+
+(disable-logging)
+
 ```
 
 ### Twitter Instance API ###
@@ -67,6 +77,10 @@ Work in Progress
 (def-twitter symbol & [config-path])
 
 ;; twitter/with fns
+
+(enable-logging [& filepath])
+
+(disable-logging)
 
 (add-rate-limit-status-listener listener)
 

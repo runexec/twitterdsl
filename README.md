@@ -1,19 +1,3 @@
-#### TwitterDSL Documentation ####
-
-<a href="#basics">Basics</a><br />
-<a href="#triggers">Triggers</a><br />
-<a href="#twitter-instance-api">Twitter Instance</a><br />
-<a href="#status-api">Status</a><br />
-<a href="#message-api">Message</a><br />
-<a href="#favorite-api">Favorite</a><br />
-<a href="#tweet-api">Tweet</a><br />
-<a href="#search-api">Search</a><br />
-<a href="#user-api">User</a><br />
-<a href="#timeline-api">Timeline</a><br />
-<a href="#following-api">Follow</a><br />
-<a href="#friendship-api">Friendship</a><br />
-<a href="#relationship-api">Relationship</a><br />
-
 #### Dependencies ####
 
 Filenames that aren't prefixed with dsl depend on the twitter4j library. The file dsl.clj and all files with <br />
@@ -53,6 +37,23 @@ cp ~/twitterdsl/api.config.example api.config
 # Test install 
 echo "(use 'twitterdsl.dsl) (new-instance instance) instance" | lein repl
 ```
+
+#### TwitterDSL API Documentation ####
+
+<a href="#basics">Basics</a><br />
+<a href="#triggers">Triggers</a><br />
+<a href="#twitter-instance-api">Twitter Instance</a><br />
+<a href="#status-api">Status</a><br />
+<a href="#message-api">Message</a><br />
+<a href="#favorite-api">Favorite</a><br />
+<a href="#tweet-api">Tweet</a><br />
+<a href="#search-api">Search</a><br />
+<a href="#user-api">User</a><br />
+<a href="#timeline-api">Timeline</a><br />
+<a href="#following-api">Follow</a><br />
+<a href="#friendship-api">Friendship</a><br />
+<a href="#relationship-api">Relationship</a><br />
+
 
 #### Basics ####
 

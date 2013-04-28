@@ -14,14 +14,52 @@
 <a href="#friendship-api">Friendship</a><br />
 <a href="#relationship-api">Relationship</a><br />
 
-Work in Progress
+#### Dependencies ####
+
+Filenames that aren't prefixed with dsl depend on the <br />
+twitter4j library. The file dsl.clj and all files with <br />
+the prefix of dsl_ are built on top of the Clojure <br />
+implementatio of the twitter4j library.
+
+#### Work in Progress ####
+
+A good chunk of the twitter4j library has a Clojure <br />
+abstraction but there's still some work to do to completely <br />
+escape the Java interop calls that have to be made on objects.
+
+#### Installation & Setup ####
+
+Command Line
+```bash
+# Get files 
+cd ~/; git clone https://github.com/runexec/twitterdsl
+
+# Install
+cd twitterdsl; lein install
+
+# Create test project
+cd /tmp/; lein new test-project; cd test-project
+```
+
+Add the project dependency
+```clojure
+[twitterdsl/twitterdsl "0.1.0-SNAPSHOT"]
+```
+
+Command Line
+```bash
+# Copy and configure API
+cp ~/twitterdsl/api.config.example api.config
+# Test install 
+echo "(use 'twitterdsl.dsl) (new-instance instance) instance" | lein repl
+```
 
 #### Basics ####
 
 ```clojure
 (use 'twitterdsl.dsl)
 
-(def-twitter instance)
+(new-instance instance)
 
 (twitter
  instance
@@ -74,7 +112,7 @@ Work in Progress
 ### Twitter Instance API ###
 ```clojure
 
-(def-twitter symbol & [config-path])
+(new-instance symbol & [config-path])
 
 ;; twitter/with fns
 

@@ -1,5 +1,6 @@
 (ns ^{:doc "Can only be loaded after twitterdsl.dsl"}
-  twitterdsl.dsl-user)
+  twitterdsl.dsl-user
+  (:refer-clojure :exclude [name]))
 
 (def ^:dynamic *user*)
 

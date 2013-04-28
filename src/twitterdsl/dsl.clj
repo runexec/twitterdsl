@@ -1,7 +1,11 @@
-(ns twitterdsl.dsl
-  (:use [twitterdsl.core
-         :only [def-twitter]]))
+(ns twitterdsl.dsl)
 
+(defmacro new-instance
+  [symbol & [config-path]]
+  (if-not config-path
+    `(twitterdsl.core/def-twitter ~symbol)
+    `(twitterdsl.core/def-twitter ~symbol ~config-path)))
+  
 (def ^:dynamic *instance*)
 
 (def ^:private twitter-api-resource

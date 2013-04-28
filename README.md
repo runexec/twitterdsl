@@ -16,20 +16,18 @@
 
 #### Dependencies ####
 
-Filenames that aren't prefixed with dsl depend on the <br />
-twitter4j library. The file dsl.clj and all files with <br />
-the prefix of dsl_ are built on top of the Clojure <br />
-implementatio of the twitter4j library.
+Filenames that aren't prefixed with dsl depend on the twitter4j library. The file dsl.clj and all files with <br />
+the prefix of dsl_ are built on top of the Clojure implementatio of the twitter4j library.
 
 #### Work in Progress ####
 
-A good chunk of the twitter4j library has a Clojure <br />
-abstraction but there's still some work to do to completely <br />
+A good chunk of the twitter4j library has a Clojure abstraction but there's still some work to do to completely <br />
 escape the Java interop calls that have to be made on objects.
 
 #### Installation & Setup ####
 
 Command Line
+
 ```bash
 # Get files 
 cd ~/; git clone https://github.com/runexec/twitterdsl
@@ -42,11 +40,13 @@ cd /tmp/; lein new test-project; cd test-project
 ```
 
 Add the project dependency
+
 ```clojure
 [twitterdsl/twitterdsl "0.1.0-SNAPSHOT"]
 ```
 
 Command Line
+
 ```bash
 # Copy and configure API
 cp ~/twitterdsl/api.config.example api.config

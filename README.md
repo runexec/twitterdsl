@@ -64,19 +64,18 @@ escape the Java interop calls that have to be made on objects.
 
 (new-instance instance)
 
-(twitter
- instance
- (let [tweets (search/with 
-               (search/query "Clojure")
-               (search/tweets))]
-   (doseq [t tweets
-           :let [status (tweet/parse t)]]
-     (tweet/with 
-      status
-      (user/with
-       (user/parse (tweet/user))
-       (println
-        (user/screen-name) " - " (tweet/text) "\n"))))))
+(twitte  instance
+         (let [tweets (search/with 
+                       (search/query "Clojure")
+                       (search/tweets))]
+           (doseq [t tweets
+                   :let [status (tweet/parse t)]]
+             (tweet/with 
+              status
+              (user/with
+               (user/parse (tweet/user))
+               (println
+                (user/screen-name) " - " (tweet/text) "\n"))))))
 
 ```
 
@@ -115,78 +114,158 @@ escape the Java interop calls that have to be made on objects.
 ### Twitter Instance API ###
 ```clojure
 
-(new-instance symbol & [config-path])
+;; Create a new instance using the default config
+;; default config = api.config in project classpath
+(new-instance -symbol)
+
+;; Create a new instance instance based on the 
+;; non-default configuratin path
+(new-instance -symbol "/tmp/api.config")
+
+;; Enable logging to default file of {date}.log
+(enable-logging)
+
+;; Enable logging to the non-default config path
+(enable-logging "/tmp/output.log")
+
+;; Disable the logging trigger
+(disable-logging)
 
 ;; twitter/with fns
 
-(enable-logging [& filepath])
+;; Twitter4j Instance Listener
+(twitter instance
+         (add-rate-limit-status-listener listener))
 
-(disable-logging)
+;; OAuthAuthorization / consumerkey, consumersecret, accesstoken
+(twitter instance
+         (authorization))
 
-(add-rate-limit-status-listener listener)
+;; Twitter instance configuration
+(twitter instance
+         (configuration))
 
-(authorization)
+;; User id of the authorized user
+(twitter instance
+         (user-id))
 
-(configuration)
+;; User @screen-name
+(twitter instance
+         (screen-name))
 
-(user-id)
-
-(screen-name)
-
-(shutdown)
+;; Free resources 
+(twitter instance
+         (shutdown))
 ```
 
 ### status/ API ###
 ```clojure
-(destroy [status-id])
+;; Delete a tweet
+(twitter instance
+         (status/destroy status-id))
 
-(oembed [oembed-req])
+;; Get embeded object form a tweet
+(twitter instance
+         (status/oembed oembed-req))
 
-(retweets [status-id])
+;; Returns up to 100 of the first retweets of a given tweet
+(twitter instance
+         (status/retweets status-id))
 
-(retweet [status-id])
+;; Retweet a message
+(twitter instance
+         (status/retweet status-id))
 
-(show [status-id])
+;; Returns a single status, specified by the id parameter below.
+;; The status's author will be returned inline. 
+(twitter instance
+         (status/show status-id))
 
-(tweet [msg])
+;; Write a new tweet
+(twitter instance
+         (status/tweet msg))
 ```
 
 ### message/ API ###
 
 ```clojure
-(destroy [id])
+(twitter instance
+         (message/destroy id))
 
-(messages [& [paging]])
+(twitter instance
+         (message/messages [& paging]))
 
-(sent-messages [& [paging]])
+(twitter instance
+         (message/sent-messages [& [paging]]))
 
-(send [username-or-id msg])
+(twitter instance
+         (message/send username-or-id msg))
 
-(show [id])
+(twitter instance
+         (message/show id))
 
-(parse [dm])
+(twitter instance
+         (message/parse dm))
 
-(with parse-result & body)
+(twitter instance
+         (message/with
+          (message/parse dm) & body))
 
 ;; message/with fns
 
-(created-date)
 
-(id)
+(twitter instance
+         (message/with
+          (message/parse dm)
+          (message/created-date)))
 
-(recipient)
 
-(recipient-id)
+(twitter instance
+         (message/with
+          (message/parse dm)
+          (message/id)))
 
-(recipient-screen-name)
 
-(sender)
+(twitter instance
+         (message/with
+          (message/parse dm)
+          (message/recipient)))
 
-(sender-id)
 
-(sender-screen-name)
+(twitter instance
+         (message/with
+          (message/parse dm)
+          (message/recipient-id)))
 
-(message)
+
+(twitter instance
+         (message/with
+          (message/parse dm)
+          (message/recipient-screen-name)))
+
+
+(twitter instance
+         (message/with
+          (message/parse dm)
+          (message/sender)))
+
+
+(twitter instance
+         (message/with
+          (message/parse dm)
+          (message/sender-id)))
+
+
+(twitter instance
+         (message/with
+          (message/parse dm)
+          (message/sender-screen-name)))
+
+
+(twitter instance
+         (message/with
+          (message/parse dm)
+          (message/message)))
 
 ```
 

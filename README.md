@@ -1,12 +1,20 @@
-#### Dependencies ####
+A lot better documentation is coming shortly. Hang tight.
 
-Filenames that aren't prefixed with dsl depend on the twitter4j library. The file dsl.clj and all files with <br />
-the prefix of dsl_ are built on top of the Clojure implementatio of the twitter4j library.
+#### TwitterDSL API Documentation ####
 
-#### Work in Progress ####
-
-A good chunk of the twitter4j library has a Clojure abstraction but there's still some work to do to completely <br />
-escape the Java interop calls that have to be made on objects.
+<a href="#basics">Basics</a><br />
+<a href="#triggers">Triggers</a><br />
+<a href="#twitter-instance-api">Twitter Instance</a><br />
+<a href="#status-api">Status</a><br />
+<a href="#message-api">Message</a><br />
+<a href="#favorite-api">Favorite</a><br />
+<a href="#tweet-api">Tweet</a><br />
+<a href="#search-api">Search</a><br />
+<a href="#user-api">User</a><br />
+<a href="#timeline-api">Timeline</a><br />
+<a href="#following-api">Follow</a><br />
+<a href="#friendship-api">Friendship</a><br />
+<a href="#relationship-api">Relationship</a><br />
 
 #### Installation & Setup ####
 
@@ -38,21 +46,15 @@ cp ~/twitterdsl/api.config.example api.config
 echo "(use 'twitterdsl.dsl) (new-instance instance) instance" | lein repl
 ```
 
-#### TwitterDSL API Documentation ####
+#### Dependencies ####
 
-<a href="#basics">Basics</a><br />
-<a href="#triggers">Triggers</a><br />
-<a href="#twitter-instance-api">Twitter Instance</a><br />
-<a href="#status-api">Status</a><br />
-<a href="#message-api">Message</a><br />
-<a href="#favorite-api">Favorite</a><br />
-<a href="#tweet-api">Tweet</a><br />
-<a href="#search-api">Search</a><br />
-<a href="#user-api">User</a><br />
-<a href="#timeline-api">Timeline</a><br />
-<a href="#following-api">Follow</a><br />
-<a href="#friendship-api">Friendship</a><br />
-<a href="#relationship-api">Relationship</a><br />
+Filenames that aren't prefixed with dsl depend on the twitter4j library. The file dsl.clj and all files with <br />
+the prefix of dsl_ are built on top of the Clojure implementatio of the twitter4j library.
+
+#### Work in Progress ####
+
+A good chunk of the twitter4j library has a Clojure abstraction but there's still some work to do to completely <br />
+escape the Java interop calls that have to be made on objects.
 
 
 #### Basics ####

@@ -64,7 +64,7 @@ escape the Java interop calls that have to be made on objects.
 
 (new-instance instance)
 
-(twitte  instance
+(twitter instance
          (let [tweets (search/with 
                        (search/query "Clojure")
                        (search/tweets))]

@@ -189,79 +189,96 @@ escape the Java interop calls that have to be made on objects.
 ### message/ API ###
 
 ```clojure
+;; Delete a direct message sent or received by you
 (twitter instance
          (message/destroy id))
 
+;; Get received messages
 (twitter instance
          (message/messages [& paging]))
 
+;; Returns list of direct messages sent by you
 (twitter instance
          (message/sent-messages [& [paging]]))
 
+;; Sends direct message to the specified user 
 (twitter instance
          (message/send username-or-id msg))
 
+;; Returns direct message with the dm id
 (twitter instance
          (message/show id))
 
+;; Returns a hash-set with all the characteristics
+;; of a direct message
 (twitter instance
          (message/parse dm))
 
+;; Binds parsed direct message so that all calls 
+;; from the message/ ns is refering to the parsed
+;; direct message
 (twitter instance
          (message/with
           (message/parse dm) & body))
 
 ;; message/with fns
 
-
+;; Returns java.util.Date creation time of a 
+;; direct message
 (twitter instance
          (message/with
           (message/parse dm)
           (message/created-date)))
 
-
+;; Returns the id of a direct message
 (twitter instance
          (message/with
           (message/parse dm)
           (message/id)))
 
-
+;; Returns who the message was being sent to and
+;; can be manipulated with the user/ ns
 (twitter instance
          (message/with
           (message/parse dm)
           (message/recipient)))
 
-
+;; The user id of the person who recieved the
+;; direct message
 (twitter instance
          (message/with
           (message/parse dm)
           (message/recipient-id)))
 
 
+;; The @screen-name of the person who recieved the
+;; direct message
 (twitter instance
          (message/with
           (message/parse dm)
           (message/recipient-screen-name)))
 
-
+;; Returns who the message was being sent from and
+;; can be manipulated with the user/ ns
 (twitter instance
          (message/with
           (message/parse dm)
           (message/sender)))
 
-
+;; The user id of the person who sent the direct message
 (twitter instance
          (message/with
           (message/parse dm)
           (message/sender-id)))
 
-
+;; The @screen-name of the person who sent
+;; the direct message
 (twitter instance
          (message/with
           (message/parse dm)
           (message/sender-screen-name)))
 
-
+;; Returns the text from within the direct message
 (twitter instance
          (message/with
           (message/parse dm)

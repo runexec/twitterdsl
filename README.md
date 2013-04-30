@@ -215,7 +215,7 @@ escape the Java interop calls that have to be made on objects.
          (message/parse dm))
 
 ;; Binds parsed direct message so that all calls 
-;; from the message/ ns is refering to the parsed
+;; from the message/ ns is referring to the parsed
 ;; direct message
 (twitter instance
          (message/with
@@ -323,7 +323,7 @@ escape the Java interop calls that have to be made on objects.
          (tweet/parse twitter-status))
 
 ;; Binds parsed tweet status so that all calls 
-;; from the tweet/ ns is refering to the parsed
+;; from the tweet/ ns is referring to the parsed
 ;; status message
 (twitter instance
          (tweet/with [parse-results & body]))
@@ -455,36 +455,85 @@ escape the Java interop calls that have to be made on objects.
 ### search/ API###
 ```clojure
 
-(query [search])
+;; Returns hash-set of search characteristics
+(twitter instance
+         (search/query "search text"))
 
-(with [query-results & body])
+;; Binds search/query so that all calls from the 
+;; search/ ns is referring to the query
+(twitter instance
+         (search/with
+          (search/query "search text") & body))
 
 ;; search/with fns
 
-(instance)
+;; Return search page instance object.
+(twitter instance
+         (search/with
+          (search/query "search text")
+          (search/instance)))
 
-(next-page-instance)
+;; Returns a search instance to fetch next page or null if there 
+;; is no next page.
+(twitter instance
+         (search/with
+          (search/query "search text")
+          (search/next-page-instance)))
 
-(access-level)
+;; Returns application permission model
+(twitter instance
+         (search/with
+          (search/query "search text")
+          (search/access-level)))
 
-(rate-limit-status)
+;; Returns current rate limit status
+(twitter instance
+         (search/with
+          (search/query "search text")
+          (search/rate-limit-status)))
 
-(complete-time)
+;; Return the duration it took to fetch the search results
+(twitter instance
+         (search/with
+          (search/query "search text")
+          (search/complete-time)))
 
-(max-id)
+;; Return the max id of a search
+(twitter instance
+         (search/with
+          (search/query "search text")
+          (search/max-id)))
 
-(since-id)
+;; Return the since id of a search
+(twitter instance
+         (search/with
+          (search/query "search text")
+          (search/since-id)))
 
-(has-next?)
+;; Test if there results have another page. If so, you can
+;; get the next page with (search/next-page-instance)
+(twitter instance
+         (search/with
+          (search/query "search text")
+          (search/has-next?)))
 
-(has-many?)
+;; Returns the number of tweets found
+(twitter instance
+         (search/with
+          (search/query "search text")
+          (search/how-many)))
 
-(refresh-url)
+;; Return the since id of the search results
+(twitter instance
+         (search/with
+          (search/query "search text")
+          (search/since-id)))
 
-(since-id)
-
-(tweets)
-
+;; Return tweets found in the search results
+(twitter instance
+         (search/with
+          (search/query "search text")
+          (search/tweets)))
 ```
 
 ### user/ API ###

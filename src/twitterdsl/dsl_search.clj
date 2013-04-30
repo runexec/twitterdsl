@@ -15,8 +15,7 @@
      :since-id (.getSinceId _)
      :tweets (.getTweets _)
      :has-next? (.hasNext _)
-     :how-many? (.getCount _)
-     :refresh-url (.getRefreshURL _)}))
+     :how-many (.getCount _)}))
 
 (defmacro with [query-results & body]
   `(binding [*query-results* ~query-results]
@@ -46,11 +45,9 @@
 (defn has-next? []
   (:how-many? *query-results*))
 
-(defn has-many? []
-  (:how-many? *query-results*))
+(defn how-many []
+  (:how-many *query-results*))
 
-(defn refresh-url []
-  (:refresh-url *query-results*))
 
 (defn since-id []
   (:since-id *query-results*))

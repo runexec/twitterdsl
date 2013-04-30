@@ -289,15 +289,29 @@ escape the Java interop calls that have to be made on objects.
 ### favorite/ API ###
 
 ```clojure
-(mark [tweet-id])
+;; Mark as a favorite tweet
+(twitter instance
+         (favorite/mark tweet-id))
 
-(unmark [tweet-id])
+;; Unfavorite a favorited tweet
+(twitter instance
+         (favorited/unmark tweet-id))
 
-(favorites [])
+;; Returns the 20 most recent favorite statuses
+(twitter instance
+         (favorite/favorites))
 
-(favorites [userid-or-name-or-paging])
+;; Returns the 20 most recent favorite statuses for
+;; the authenticating user or user specified by the ID 
+(twitter instance
+         (favorite/favorites userid-or-name-or-paging))
 
-(favorites [userid-or-name paging])
+
+;; Returns the 20 most recent favorite statuses for
+;; the authenticating user or user specified by the ID 
+(twitter instance
+         (favorite/favorites userid-or-name
+                             paging))
 ```
 
 ### tweet/ API###

@@ -130,11 +130,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Triggers
 
 (defn enable-logging [& [log-file-path]]
-  (let [fp (or log-file-path
-               (-> (java.util.Date.)
-                   str
-                   (clojure.string/replace #"\s" "-")
-                   (clojure.string/replace #"\:" "-")))]
+  (let [fp (str
+            (or log-file-path
+                (-> (java.util.Date.)
+                    str
+                    (clojure.string/replace #"\s" "-")
+                    (clojure.string/replace #"\:" "-")))
+            ".log")]
     (add-trigger
      "logging-enabled"
      #(let [msg (tweet/text)

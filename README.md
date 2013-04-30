@@ -295,7 +295,7 @@ escape the Java interop calls that have to be made on objects.
 
 ;; Unfavorite a favorited tweet
 (twitter instance
-         (favorited/unmark tweet-id))
+         (favorite/unmark tweet-id))
 
 ;; Returns the 20 most recent favorite statuses
 (twitter instance
@@ -317,49 +317,139 @@ escape the Java interop calls that have to be made on objects.
 ### tweet/ API###
 
 ```clojure
-(parse [twitter-status])
+;; Returns a hash-set with all the characteristics
+;; of a tweet status
+(twitter instance
+         (tweet/parse twitter-status))
 
-(with [parse-results & body])
+;; Binds parsed tweet status so that all calls 
+;; from the tweet/ ns is refering to the parsed
+;; status message
+(twitter instance
+         (tweet/with [parse-results & body]))
 
 ;; tweet/with fns
 
-(contributors)
+;; Returns an array of contributors, or null if no contributor
+;; is associated with this status.
+(twitter instance
+         (tweet/with
+          (tweet/parse status)
+          (tweet/contributors)))
 
-(created-date)
+;; Returns java.util.Date creation time of a tweet status message
+(twitter instance
+         (tweet/with
+          (tweet/parse status)
+          (tweet/created-date)))
 
-(current-user-retweet-id)
+;; Get your retweet id
+(twitter instance
+         (tweet/with
+          (tweet/parse status)
+          (tweet/current-user-retweet-id)))
 
-(geo-location)
+;; Returns The location that this tweet refers to if available.
+(twitter instance
+         (tweet/with
+          (tweet/parse status)
+          (tweet/geo-location)))
 
-(tweet-id)
+;; Returns id of the tweet status message
+(twitter instance
+         (tweet/with
+          (tweet/parse status)
+          (tweet/tweet-id)))
 
-(reply-to-screen-name)
+;; Returns the @screen-name of the reply-to user of the
+;; tweet status message
+(twitter instance
+         (tweet/with
+          (tweet/parse status)
+          (tweet/reply-to-screen-name)))
 
-(reply-to-status-id)
+;; Returns the tweet status id of the reply-to tweet 
+;; status message
+(twitter instance
+         (tweet/with
+          (tweet/parse status)
+          (tweet/reply-to-status-id)))
 
-(reply-to-user-id)
+;; Returns the user id of the reply-to user of the
+;; tweet status message
+(twitter instance
+         (tweet/with
+          (tweet/parse status)
+          (tweet/reply-to-user-id)))
 
-(place)
+;; Returns the place attached to the tweet status
+(twitter instance
+         (tweet/with
+          (tweet/parse status)
+          (tweet/place)))
 
-(retweet-count)
+;; Returns the number of times the tweet stats has been retweeted. 
+;; -1 if the tweet was created before this feature was enabled
+(twitter instance
+         (tweet/with
+          (tweet/parse status)
+          (tweet/retweet-count)))
 
-(retweet-status)
+;; Returns original tweet status of a retweeted status 
+(twitter instance
+         (tweet/with
+          (tweet/parse status)
+          (tweet/retweet-status)))
 
-(source)
+;; Returns the source of a tweet status
+(twitter instance
+         (tweet/with
+          (tweet/parse status)
+          (tweet/source)))
 
-(text)
+;; Returns the text from within a tweet status
+(twitter instance
+         (tweet/with
+          (tweet/parse status)
+          (tweet/text)))
 
-(user)
+;; Returns the user associated with the tweet status.
+;; The user can be manipulated with the user/ ns.
+(twitter instance
+         (tweet/with
+          (tweet/parse status)
+          (tweet/user)))
 
-(favorited?)
+;; Test if you've favorited a tweet status
+(twitter instance
+         (tweet/with
+          (tweet/parse status)
+          (tweet/favorited?)))
 
-(sensitive?)
+;; Returns true if the tweet status contains a link that
+;; is identified as sensitive.
+(twitter instance
+         (tweet/with
+          (tweet/parse status)
+          (tweet/sensitive?)))
 
-(retweet?)
+;; Test if the tweet status is original or a retweet
+(twitter instance
+         (tweet/with
+          (tweet/parse status)
+          (tweet/retweet?)))
 
-(retweeted-by-me?)
+;; Test if you've retweeted the tweet status
+(twitter instance
+         (tweet/with
+          (tweet/parse status)
+          (tweet/retweeted-by-me?)))
 
-(truncated?)
+;; Test if the status is truncated
+(twitter instance
+         (tweet/with
+          (tweet/parse status)
+          (tweet/truncated?)))
 ```
 
 ### search/ API###

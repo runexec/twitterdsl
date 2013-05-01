@@ -930,21 +930,49 @@ escape the Java interop calls that have to be made on objects.
 ### friendship/ API ###
 
 ```clojure
-(parse [friendship])
 
-(with [parse-result & body])
+;; Returns a hash-set with all the characteristics
+;; of a twitter friendship
+(twitter instance
+     (friendship/parse friendship))
+
+;; Binds parsed friendship so that all calls from the 
+;; friendship/ ns are referring to the parsed friendship
+(twitter instance
+         (friendship/with 
+          (friendship/parse friendship) & body))
 
 ;; friendship/with fns
 
-(id)
+;; Get friendship friend id
+(twitter instance
+         (friendship/with 
+          (friendship/parse friendship)
+          (friendship/id)))
 
-(name)
+;; Get friendship friend name
+(twitter instance
+         (friendship/with 
+          (friendship/parse friendship)
+          (friendship/name)))
 
-(screen-name)
+;; Get friendship friend @screen-name
+(twitter instance
+         (friendship/with 
+          (friendship/parse friendship)
+          (friendship/screen-name)))
 
-(followed-by?)
+;; Test friendship friend follow-by status
+(twitter instance
+         (friendship/with 
+          (friendship/parse friendship)
+          (friendship/followed-by?)))
 
-(following?)
+;; Test friendship friend following status
+(twitter instance
+         (friendship/with 
+          (friendship/parse friendship)
+          (friendship/following?)))
 
 ```
 

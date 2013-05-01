@@ -215,7 +215,7 @@ escape the Java interop calls that have to be made on objects.
          (message/parse dm))
 
 ;; Binds parsed direct message so that all calls 
-;; from the message/ ns is referring to the parsed
+;; from the message/ ns are referring to the parsed
 ;; direct message
 (twitter instance
          (message/with
@@ -323,7 +323,7 @@ escape the Java interop calls that have to be made on objects.
          (tweet/parse twitter-status))
 
 ;; Binds parsed tweet status so that all calls 
-;; from the tweet/ ns is referring to the parsed
+;; from the tweet/ ns are referring to the parsed
 ;; status message
 (twitter instance
          (tweet/with [parse-results & body]))
@@ -460,7 +460,7 @@ escape the Java interop calls that have to be made on objects.
          (search/query "search text"))
 
 ;; Binds search/query so that all calls from the 
-;; search/ ns is referring to the query
+;; search/ ns are referring to the query
 (twitter instance
          (search/with
           (search/query "search text") & body))
@@ -540,101 +540,296 @@ escape the Java interop calls that have to be made on objects.
 
 ```clojure
 
-(parse [user])
+;; Returns a hash-set with all the characteristics
+;; of a twitter user
+(twitter instance
+	 (user/parse user))
 
-(with [parsed-result & body])
+
+;; Binds parsed twitter user so that all calls 
+;; from the user/ ns are referring to the parsed
+;; twitter user
+(twitter instance
+	 (user/with 
+          (user/parse user) & body))
 
 ;; user/with fns
 
-(bigger-profile-image-url)
+;; Returns big profile image url
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/bigger-profile-image-url)))
 
-(bigger-profile-image-url-https)
+;; Returns big profile image url with https
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/bigger-profile-image-url-https)
 
-(created-date)
+;; Returns java.util.Date of when the twitter
+;; account was created
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/created-date)))
 
-(description)
+;; Returns the description of the user
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/description)))
 
-(description-url-entities)
+;; Returns URL entities for user description.
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/description-url-entities)))
 
-(favourites-count)
+;; Returns the number of favorites a user has
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/favourites-count)))
 
-(followers-count)
+;; Returns the number of followers an user has
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/followers-count)))
 
-(friends-count)
+;; Returns the number of friends a user has
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/friends-count)))
 
-(user-id)
+;; Returns the user id of the user
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/user-id)))
 
-(language)
+;; Returns the preferred language of the user
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/language)))
 
-(listed-count)
+;; Returns the number of public lists the user is
+;; listed on, or -1 if the count is unavailable.
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/listed-count)))
 
-(location)
+;; Returns the location of the user
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/location)))
 
-(mini-profile-image-url)
+;; Returns a small user profile image url
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/mini-profile-image-url)))
 
-(mini-profile-image-url-https)
+;; Returns a small user profile image url with https
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/mini-profile-image-url-https)))
 
-(name)
+;; Returns the name of the user
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/name)))
 
-(original-profile-image-url)
+;; Returns a users original profile image url
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/original-profile-image-url)))
 
-(original-profile-image-url-https)
+;; Returns a users original profile image url with https
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/original-profile-image-url-https)))
 
-(profile-background-color)
+;; Returns profile background color of the user
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/profile-background-color)))
 
-(profile-background-image-url)
+;; Returns profile background image of the user
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/profile-background-image-url)))
 
-(profile-background-image-url-https)
 
-(profile-banner-mobile-retina-url)
+;; Returns profile background image of the user with https
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/profile-background-image-url-https)))
 
-(profile-banner-mobile-url)
+;; Returns profile banner mobile retina image url of
+;; the user
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/profile-banner-mobile-retina-url)))
 
-(profile-banner-url)
+;; Returns profile banner mobile image url of the user
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/profile-banner-mobile-url)))
 
-(profile-image-url)
+;; Returns profile banner image url of the user
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/profile-banner-url)))
 
-(profile-image-url-https)
+;; Returns profile image url of the user
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/profile-image-url)))
 
-(profile-link-color)
+;; Returns profile image url of the user with https
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/profile-image-url-https)))
 
-(profile-sidebar-border-color)
+;; Returns the profile link color of the user
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/profile-link-color)))
 
-(profile-sidebar-fill-color)
+;; Returns the profile sidebar border color of the user
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/profile-sidebar-border-color)))
 
-(profile-text-color)
+;; Returns the profile sidebar fill color of the user
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/profile-sidebar-fill-color)))
 
-(screen-name)
+;; Returns the profile text color of the user
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/profile-text-color)))
 
-(status)
+;; Returns the @screen-name of the user
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/screen-name)))
 
-(statuses-count)
+;; Returns the current status of the user
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/status)))
 
-(timezone)
+;; Returns the count of total status messages
+;; of the user
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/statuses-count)))
 
-(user-url)
+;; Returns the timezone of the user
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/timezone)))
 
-(url-entity)
+;; Returns the user url -> twiter.com/user-screen-name
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/user-url)))
 
-(utc-offset)
+;; Returns URL entity for user's URL.
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/url-entity)))
 
-(contributors-enabled?)
+;; Returns the universal time code offset of the user
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/utc-offset)))
 
-(follow-request-sent?)
+;; Tests if the user is enabling contributors
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/contributors-enabled?)))
 
-(geo-enabled?)
+;; Returns true if the authenticating user has requested 
+;; to follow this user, otherwise false.
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/follow-request-sent?)))
 
-(profile-background-tiled?)
+;; Test if the user has geo location enabled
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/geo-enabled?)))
 
-(profile-use-background-image?)
+;; Test if the user has a tiled profile background
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/profile-background-tiled?)))
 
-(protected?)
+;; Test if the user has a profile background image
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/profile-use-background-image?)))
 
-(show-all-inline-media?)
+;; Test if the user has a protected account
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/protected?)))
 
-(translator?)
+;; Test if the user has media autmatically displayed
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/show-all-inline-media?)))
 
-(verified?)
+;; Test if the user is a twitter translator
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/translator?)))
+
+;; Test if the user is verified
+(twitter instance
+	 (user/with 
+          (user/parse user)
+          (user/verified?)))
 ```
 
 ### timeline/ API ###

@@ -979,33 +979,87 @@ escape the Java interop calls that have to be made on objects.
 ### relationship/ API###
 
 ```clojure
-(parse [relationship])
+;; Returns a hash-set with all the characteristics
+;; of a twitter relationship
+(twitter instance
+         (relationship/parse relationship))
 
-(with [parse-result & body])
+;; Binds parsed relationship so that all calls from the 
+;; relationship/ ns are referring to the parsed relationship
+(twitter instance
+         (relationship/with
+          (relationship/parse relationship) & body))
 
 ;; relationship/with fns
 
-(source-id)
+;; Returns the source user id
+(twitter instance
+         (relationship/with
+          (relationship/parse relationship)
+          (relationship/source-id)))
 
-(source-user-screen-name)
+;; Returns the source user screen name
+(twitter instance
+         (relationship/with
+          (relationship/parse relationship)
+          (relationship/source-user-screen-name)))
 
-(target-userid)
+;; Returns the target user id
+(twitter instance
+         (relationship/with
+          (relationship/parse relationship)
+          (relationship/target-userid)))
 
-(target-screen-name)
+;; Returns the target user screen name
+(twitter instance
+         (relationship/with
+          (relationship/parse relationship)
+          (relationship/target-screen-name)))
 
-(source-blocking-target?)
+;; Returns if the source user is blocking the target user
+(twitter instance
+         (relationship/with
+          (relationship/parse relationship)
+          (relationship/source-blocking-target?)))
 
-(source-followed-by-target?)
+;; Checks if source user is being followed by target user
+(twitter instance
+         (relationship/with
+          (relationship/parse relationship)
+          (relationship/source-followed-by-target?)))
 
-(source-following-target?)
+;; Checks if source user is following target user
+(twitter instance
+         (relationship/with
+          (relationship/parse relationship)
+          (relationship/source-following-target?)))
 
-(source-notification-enabled?)
+;; Checks if the source user has enabled notifications
+;; for updates of the target user
+(twitter instance
+         (relationship/with
+          (relationship/parse relationship)
+          (relationship/source-notification-enabled?)))
 
-(source-wants-retweets?)
+;; Checks if the retweets from the target user enabled
+(twitter instance
+         (relationship/with
+          (relationship/parse relationship)
+          (relationship/source-wants-retweets?)))
 
-(target-followed-by-source?)
+;; Checks if target user is being followed by source user.
+;; This method is equivalent to source-following-target?
+(twitter instance
+         (relationship/with
+          (relationship/parse relationship)
+          (relationship/target-followed-by-source?)))
 
-(target-following-source?)
+;; Checks if target user is following source user.
+;; This method is equivalent to source-followed-by-target?
+(twitter instance
+         (relationship/with
+          (relationship/parse relationship)
+          (relationship/target-following-source?)))
 ```
 
 ## License

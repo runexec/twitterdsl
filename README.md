@@ -835,16 +835,31 @@ escape the Java interop calls that have to be made on objects.
 ### timeline/ API ###
 
 ```clojure
-(tweets [& [paging]])
 
-(mentions [& [paging]])
+;; Get your home timeline
+(twitter instance
+         (timeline/tweets & paging))
 
-(retweets [& [paging]])
+;; Get your mentions
+(twitter instance
+         (timeline/mentions & paging))
 
-(user-timeline
- ([])
- ([username-or-id])
- ([username-or-id paging]))
+;; Get retweets of your tweets
+(twitter instance
+         (timeline/retweets & paging))
+
+;; Get your tweet timeline
+(twitter instance
+         (timeline/user-timeline))
+
+;; Get tweet timeline of another user
+(twitter instance
+         (timeline/user-timeline username-or-id))
+
+;; Get a specific page of a users timeline
+(twitter instance
+         (timeline/user-timeline username-or-id
+                                 paging))
 ```
 
 ### following/ API ###

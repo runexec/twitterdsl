@@ -854,46 +854,77 @@ escape the Java interop calls that have to be made on objects.
 
 ;; Get tweet timeline of another user
 (twitter instance
-         (timeline/user-timeline username-or-id))
-
-;; Get a specific page of a users timeline
-(twitter instance
-         (timeline/user-timeline username-or-id
-                                 paging))
+         (timeline/user-timeline username-or-id & paging))
 ```
 
 ### following/ API ###
 
 ```clojure
-(add [userid-or-name])
+;; Follow a user
+(twitter instance
+         (following/add userid-or-name))
 
-(delete [userid-or-name])
+;; Unfollow a user
+((twitter instance
+         (following/delete userid-or-name))
 
-(follower-ids
-  ([cursor])
-  ([userid-or-name cursor]))
+;; Returns an array of numeric IDs for every user
+;; the specified user is followed by. If no user is
+;; specified, the authenticating user is the default
+(twitter instance
+         (following/follower-ids
+          ([cursor])
+          ([userid-or-name cursor])))
 
-(follower-list [userid-or-name cursor])
+;; Returns a cursored collection of user objects for
+;; users following the specified user. At this time,
+;; results are ordered with the most recent following first
+;;  — however, this ordering is subject to unannounced 
+;; change and eventual consistency issues.
+(twitter instance
+         (following/follower-list userid-or-name
+                                  cursor))
+;; Get the ids of your followers
+(twitter instance
+         (following/my-follower-ids cursor))
 
-(my-follower-ids [cursor]
+;; Get the ids of another user's followers 
+(twitter instance
+         (following/follower-ids-of userid-or-name
+                                    cursor)
 
-(follower-ids-of [userid-or-name cursor])
+;; Returns a cursored collection of user objects for
+;; every user the specified user is following (otherwise 
+;; known as their "friends"). At this time, results are
+;; ordered with the most recent following first — however,
+;; this ordering is subject to unannounced change and 
+;; eventual consistency issues.
+(twitter instance
+         (following/follower-list-of userid-or-name
+                                     cursor))
 
-(follower-list-of [userid-or-name cursor])
+;; Returns an array of numeric IDs for every user who 
+;; has a pending request to follow the authenticating user.
+(twitter instance
+         (following/incoming cursor))
 
-(incoming [cursor])
+;; Returns the relationship of the authenticating user
+;; to the specified users.
+(twitter instance
+         (following/lookup coll-userids-or-names))
 
-(lookup [coll-userids-or-names])
+;; Returns detailed information about the relationship
+;; between two users
+(twitter instance
+         (following/show-friendship sourceid-or-name
+                                    targetid-or-name))
 
-(show-friendship
-  [sourceid-or-name
-   targetid-or-name])
-
-(update-friendship
-  [userid-or-name
-   enable-device-notify?
-   retweets?])
-
+;; Allows you to enable or disable retweets and device
+;; notifications from the specified user
+(twitter instance
+         (following/update-friendship userid-or-name
+                                      enable-device-notify?
+                                      retweets?))
 ```
 
 ### friendship/ API ###

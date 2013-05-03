@@ -1,7 +1,9 @@
-A lot better documentation is coming shortly. Hang tight.
+TwitterDSL is a Clojure library for working easily with the Twitter service.
+
 
 #### TwitterDSL API Documentation ####
 
+<p><a href="##installation--setup">Installation & Setup</a></p>
 <a href="#basics">Basics</a><br />
 <a href="#triggers">Triggers</a><br />
 <a href="#twitter-instance-api">Twitter Instance</a><br />

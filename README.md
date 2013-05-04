@@ -101,7 +101,7 @@ escape the Java interop calls that have to be made on objects.
 
 (remove-trigger "clojure")
 
-(enable-logging "/tmp/outfile")
+(enable-logging! "/tmp/outfile")
 
 (twitter instance 
          (doseq [_ (timeline/tweets)
@@ -109,7 +109,7 @@ escape the Java interop calls that have to be made on objects.
            (tweet/with t))
          (println "Done logging"))
 
-(disable-logging)
+(disable-logging!)
 
 ```
 
@@ -125,13 +125,13 @@ escape the Java interop calls that have to be made on objects.
 (new-instance -symbol "/tmp/api.config")
 
 ;; Enable logging to default file of {date}.log
-(enable-logging)
+(enable-logging!)
 
 ;; Enable logging to the non-default config path
-(enable-logging "/tmp/output.log")
+(enable-logging! "/tmp/output.log")
 
 ;; Disable the logging trigger
-(disable-logging)
+(disable-logging!)
 
 ;; twitter/with fns
 

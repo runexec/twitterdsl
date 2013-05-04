@@ -129,7 +129,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Triggers
 
-(defn enable-logging [& [log-file-path]]
+(defn enable-logging! [& [log-file-path]]
   (let [fp (str
             (or log-file-path
                 (-> (java.util.Date.)
@@ -155,6 +155,6 @@
               log
               :append true)))))
 
-(defn disable-logging []
+(defn disable-logging! []
   (remove-trigger "logging-enabled"))
 

@@ -137,7 +137,7 @@
                     (clojure.string/replace #"\s" "-")
                     (clojure.string/replace #"\:" "-")))
             ".log")]
-    (add-trigger
+    (add-trigger!
      "logging-enabled"
      #(let [msg (tweet/text)
             date (str (tweet/created-date))
@@ -156,5 +156,5 @@
               :append true)))))
 
 (defn disable-logging! []
-  (remove-trigger "logging-enabled"))
+  (remove-trigger! "logging-enabled"))
 

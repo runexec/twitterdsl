@@ -85,7 +85,7 @@ escape the Java interop calls that have to be made on objects.
 
 ```clojure
 
-(add-trigger "clojure"
+(add-trigger! "clojure"
              #(println
                (tweet/created-date) " - " (tweet/text)))
 
@@ -99,7 +99,7 @@ escape the Java interop calls that have to be made on objects.
      ;; Calls All Triggers 
      (tweet/with status))))
 
-(remove-trigger "clojure")
+(remove-trigger! "clojure")
 
 (enable-logging! "/tmp/outfile")
 

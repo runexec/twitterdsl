@@ -95,14 +95,14 @@
 
 (def a-triggers (atom '()))
 
-(defn add-trigger 
+(defn add-trigger! 
   [trigger-name fn-trigger]
   (swap! a-triggers
          conj
          {:name trigger-name
           :trigger fn-trigger}))
 
-(defn remove-trigger [trigger-name]
+(defn remove-trigger! [trigger-name]
   (swap! a-triggers
          (fn [x]
            (filter

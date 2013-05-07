@@ -1,3 +1,5 @@
+[![endorse](https://api.coderwall.com/runexec/endorsecount.png)](https://coderwall.com/runexec)
+
 TwitterDSL is a Clojure library for working easily with the Twitter service.
 
 
